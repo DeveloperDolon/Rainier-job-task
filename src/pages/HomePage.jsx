@@ -15,11 +15,33 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
 import iconVector from "../assets/Icon_Vector.svg";
+import { DateRange, History, Home, Person, Settings } from '@mui/icons-material';
 
 const drawerWidth = 300;
+
+const menuItems = [
+    {
+        item: "Home",
+        icon: <Home></Home>
+    },
+    {
+        item: "Patient Profile",
+        icon: <Person></Person>
+    },
+    {
+        item: "Appointments",
+        icon: <DateRange></DateRange>
+    },
+    {
+        item: "Medical History",
+        icon: <History></History>
+    },
+    {
+        item: "Settings",
+        icon: <Settings></Settings>
+    }
+]
 
 const openedMixin = (theme) => ({
     width: drawerWidth,
@@ -87,64 +109,74 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 );
 
 export default function HomePage() {
+    const [toolPadding, setToolPadding] = React.useState(24);
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
 
     const handleDrawerOpen = () => {
         setOpen(true);
+        setToolPadding(0);
     };
 
     const handleDrawerClose = () => {
         setOpen(false);
+        setToolPadding(24);
     };
 
     return (
-        <Box sx={{ display: 'flex' }}>
+        <Box sx={{ display: 'flex', border: "0px" }}>
             <CssBaseline />
             <AppBar style={{boxShadow: "none"}} position="fixed" open={open}>
-                <Toolbar className='bg-[#F9F9F9] text-black'>
+                <Toolbar style={{paddingLeft: toolPadding, paddingRight: 0}} className='bg-white flex text-black'>
                     <IconButton
-                        color="inherit"
+                        className='shadow-md'
+                        color="#FF7594"
                         aria-label="open drawer"
                         onClick={handleDrawerOpen}
                         edge="start"
                         sx={{
-                            marginRight: 5,
+                            borderRadius: "7px",
+                            backgroundColor: "white",
+                            marginRight: 1.5,
                             ...(open && { display: 'none' }),
                         }}
                     >
-                        <MenuIcon />
+                        <MenuIcon className='text-[#FF7594]'/>
                     </IconButton>
-                    <Typography variant="h5" className='md:py-10 py-5' noWrap component="div">
-                        <span className='font-medium'>
-                            Home 
+                    <Typography className='flex-1 border-l md:py-6 py-5 bg-[#F9F9F9] pl-6' noWrap component="div">
+                        <span className='font-medium md:text-2xl text-lg'>
+                            Home
                         </span>
                     </Typography>
                 </Toolbar>
             </AppBar>
             <Drawer style={{
-                border:"0px"
+                border:"0px",
             }} variant="permanent" open={open}>
-                <DrawerHeader className='flex justify-start'>
-                    <div className='flex justify-between items-center md:gap-5 gap-3 px-5 py-5 md:py-10'>
+                <DrawerHeader sx={{border: "0px"}} className='flex justify-end'>
+                    <div className='flex w-full pl-5 justify-start items-center md:gap-5 gap-3 md:py-6 py-4'>
                         <img src={iconVector} alt="" />
                         <h1 className='md:text-3xl text-xl font-medium'>Medl<span className='text-[#FF7594]'>Doc</span></h1>
                     </div>
-                    <IconButton style={{
-
+                    <IconButton className='shadow-md' style={{
+                        zIndex: 100
                     }} onClick={handleDrawerClose}>
                         {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
                     </IconButton>
                 </DrawerHeader>
-                <List>
-                    {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-                        <ListItem key={text} disablePadding sx={{ display: 'block' }}>
+
+                <List sx={{
+                    mt: 10
+                }}>
+                    {menuItems?.map((text, index) => (
+                        <ListItem key={index} disablePadding sx={{ display: 'block' }}>
                             <ListItemButton
                                 sx={{
                                     minHeight: 48,
                                     justifyContent: open ? 'initial' : 'center',
                                     px: 2.5,
                                 }}
+                                className='font-medium'
                             >
                                 <ListItemIcon
                                     sx={{
@@ -152,40 +184,17 @@ export default function HomePage() {
                                         mr: open ? 3 : 'auto',
                                         justifyContent: 'center',
                                     }}
+                                    
                                 >
-                                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                                    {text?.icon}
                                 </ListItemIcon>
-                                <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
-                            </ListItemButton>
-                        </ListItem>
-                    ))}
-                </List>
-                <List>
-                    {['All mail', 'Trash', 'Spam'].map((text, index) => (
-                        <ListItem key={text} disablePadding sx={{ display: 'block' }}>
-                            <ListItemButton
-                                sx={{
-                                    minHeight: 48,
-                                    justifyContent: open ? 'initial' : 'center',
-                                    px: 2.5,
-                                }}
-                            >
-                                <ListItemIcon
-                                    sx={{
-                                        minWidth: 0,
-                                        mr: open ? 3 : 'auto',
-                                        justifyContent: 'center',
-                                    }}
-                                >
-                                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                                </ListItemIcon>
-                                <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
+                                <ListItemText primary={text?.item} sx={{ opacity: open ? 1 : 0 }} />
                             </ListItemButton>
                         </ListItem>
                     ))}
                 </List>
             </Drawer>
-            <Box component="main" className='bg-[#F9F9F9] min-h-[calc(100vh)]' sx={{ flexGrow: 1, p: 3 }}>
+            <Box component="main" className='bg-[#F9F9F9] min-h-[calc(100vh)]' sx={{ flexGrow: 1, p: 3, border: "0px" }}>
                 <DrawerHeader />
                 <Typography paragraph>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
