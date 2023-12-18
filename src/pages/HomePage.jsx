@@ -16,30 +16,37 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import iconVector from "../assets/Icon_Vector.svg";
-import { DateRange, History, Home, Person, Settings } from '@mui/icons-material';
+import { LuHome } from "react-icons/lu";
+import { IoPersonOutline } from "react-icons/io5";
+import { LuCalendarRange } from "react-icons/lu";
+import { FaHistory } from "react-icons/fa";
+import { IoSettingsOutline } from "react-icons/io5";
+import lightIcon from "../assets/noto_sun.svg";
+import avater from "../assets/Avatar.svg";
+import { IoIosArrowDown } from "react-icons/io";
 
 const drawerWidth = 300;
 
 const menuItems = [
     {
         item: "Home",
-        icon: <Home></Home>
+        icon: <LuHome />
     },
     {
         item: "Patient Profile",
-        icon: <Person></Person>
+        icon: <IoPersonOutline />
     },
     {
         item: "Appointments",
-        icon: <DateRange></DateRange>
+        icon: <LuCalendarRange />
     },
     {
         item: "Medical History",
-        icon: <History></History>
+        icon: <FaHistory />
     },
     {
         item: "Settings",
-        icon: <Settings></Settings>
+        icon: <IoSettingsOutline />
     }
 ]
 
@@ -126,8 +133,8 @@ export default function HomePage() {
     return (
         <Box sx={{ display: 'flex', border: "0px" }}>
             <CssBaseline />
-            <AppBar style={{boxShadow: "none"}} position="fixed" open={open}>
-                <Toolbar style={{paddingLeft: toolPadding, paddingRight: 0}} className='bg-white flex text-black'>
+            <AppBar style={{ boxShadow: "none" }} position="fixed" open={open}>
+                <Toolbar style={{ paddingLeft: toolPadding, paddingRight: 0 }} className='bg-white flex text-black'>
                     <IconButton
                         className='shadow-md'
                         color="#FF7594"
@@ -141,19 +148,34 @@ export default function HomePage() {
                             ...(open && { display: 'none' }),
                         }}
                     >
-                        <MenuIcon className='text-[#FF7594]'/>
+                        <MenuIcon className='text-[#FF7594]' />
                     </IconButton>
-                    <Typography className='flex-1 border-l md:py-6 py-5 bg-[#F9F9F9] pl-6' noWrap component="div">
-                        <span className='font-medium md:text-2xl text-lg'>
-                            Home
-                        </span>
-                    </Typography>
+                    <div className='flex-1 flex justify-between pr-10 items-center bg-[#F9F9F9]'>
+                        <Typography className='border-l md:py-6 py-5 pl-6' noWrap component="div">
+                            <span className='font-medium md:text-2xl text-lg'>
+                                Home
+                            </span>
+                        </Typography>
+
+                        <div className='flex md:gap-5 gap-3'>
+                            <div className='border-[#FDDAD6] border-2 rounded-full w-24 flex justify-end'>
+                                <button className='bg-[#fddad686] rounded-full w-fit p-2 cursor-pointer'>
+                                    <img className='md:w-6 w-4 md:h-6 h-4 rounded-full' src={lightIcon} alt="" />
+                                </button>
+                            </div>
+
+                            <div className='flex items-center md:gap-3 gap-2'>
+                                <img src={avater} alt="" />
+                                <IoIosArrowDown className='md:text-2xl text-lg' />
+                            </div>
+                        </div>
+                    </div>
                 </Toolbar>
             </AppBar>
             <Drawer style={{
-                border:"0px",
+                border: "0px",
             }} variant="permanent" open={open}>
-                <DrawerHeader sx={{border: "0px"}} className='flex justify-end'>
+                <DrawerHeader sx={{ border: "0px" }} className='flex justify-end'>
                     <div className='flex w-full pl-5 justify-start items-center md:gap-5 gap-3 md:py-6 py-4'>
                         <img src={iconVector} alt="" />
                         <h1 className='md:text-3xl text-xl font-medium'>Medl<span className='text-[#FF7594]'>Doc</span></h1>
@@ -166,7 +188,7 @@ export default function HomePage() {
                 </DrawerHeader>
 
                 <List sx={{
-                    mt: 10
+                    mt: 5
                 }}>
                     {menuItems?.map((text, index) => (
                         <ListItem key={index} disablePadding sx={{ display: 'block' }}>
@@ -184,9 +206,11 @@ export default function HomePage() {
                                         mr: open ? 3 : 'auto',
                                         justifyContent: 'center',
                                     }}
-                                    
+
                                 >
-                                    {text?.icon}
+                                    <span className='md:text-2xl font-bold text-xl'>
+                                        {text?.icon}
+                                    </span>
                                 </ListItemIcon>
                                 <ListItemText primary={text?.item} sx={{ opacity: open ? 1 : 0 }} />
                             </ListItemButton>
