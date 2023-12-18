@@ -24,6 +24,18 @@ const WellcomeComponent = () => {
         e.target.todo.value = "";
     }
 
+    const handleSelectAll = (e) => {
+        const checkboxContainer = document.getElementById("checkboxContainer");
+
+        const inputs = Array.prototype.slice.call(checkboxContainer.getElementsByTagName("input"));
+
+        if(e.target.checked && inputs?.length > 0) {
+            inputs?.forEach(item => item.checked = true);
+            return;
+        }
+        inputs?.forEach(item => item.checked = false);
+    }
+
     return (
         <div className="flex justify-between lg:flex-row flex-col gap-5">
             <div className="lg:w-[60%] w-full">
@@ -98,7 +110,7 @@ const WellcomeComponent = () => {
 
                     <div className="mt-10 flex justify-between items-centers">
                         <div className="flex items-center checkbox-container">
-                            <input className="md:w-10 md:h-10 w-7 h-7 accent-[#FF7594] bg-white rounded-lg text-white" type="checkbox" /> <label className="md:text-lg text-sm font-semibold ml-5">Select All</label>
+                            <input onClick={handleSelectAll} className="w-10 h-10 accent-[#FF7594] bg-white rounded-lg text-white" type="checkbox" /> <label className="md:text-lg text-sm font-semibold ml-5">Select All</label>
                         </div>
 
                         <button
@@ -106,10 +118,10 @@ const WellcomeComponent = () => {
                             className="flex gap-2 items-center py-2 px-6 md:text-lg text-sm rounded-lg text-white" type="submit"><MdDone /> Done</button>
                     </div>
 
-                    <div className="mt-8 space-y-5 min-h-[300px]">
+                    <div id="checkboxContainer" className="mt-8 space-y-5 min-h-[300px]">
                         {
                             todos?.map((item, idx) => <div key={idx} className="flex items-center checkbox-container">
-                                <input className="md:w-10 md:h-10 w-7 h-7 accent-[#FF7594] bg-white rounded-lg text-white" type="checkbox" /> <label className="md:text-lg text-sm font-semibold ml-5 flex items-center">{item?.text} <span className="ml-5 text-gray-300 md:text-base text-sm font-medium">Last Added: {item?.date}</span></label>
+                                <input className="w-10 h-10 accent-[#FF7594] bg-white rounded-lg text-white" type="checkbox" /> <label className="md:text-lg text-sm font-semibold ml-5 flex items-center">{item?.text} <span className="ml-5 text-gray-300 md:text-base text-sm font-medium">Last Added: {item?.date}</span></label>
                             </div>)
                         }
                     </div>
