@@ -8,6 +8,7 @@ import { MdDone } from "react-icons/md";
 import "./style.css";
 import { useState } from "react";
 import moment from "moment";
+import Appointments from "../Appointments/Appointments";
 
 const WellcomeComponent = () => {
 
@@ -128,8 +129,8 @@ const WellcomeComponent = () => {
                 </div>
             </div>
 
-            <div className="lg:w-[35%] w-full bg-black">
-                sf
+            <div className="lg:w-[500px] w-full h-fit bg-white border rounded-lg">
+                <Appointments></Appointments>
             </div>
         </div>
     );
