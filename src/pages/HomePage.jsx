@@ -24,6 +24,7 @@ import { IoSettingsOutline } from "react-icons/io5";
 import lightIcon from "../assets/noto_sun.svg";
 import avater from "../assets/Avatar.svg";
 import { IoIosArrowDown } from "react-icons/io";
+import WellcomeComponent from '../components/WellcomeComponent/WellcomeComponent';
 
 const drawerWidth = 300;
 
@@ -130,6 +131,14 @@ export default function HomePage() {
         setToolPadding(24);
     };
 
+    const handleTheme = () => {
+        if(document.body.getAttribute("data-theme") === "dark") {
+            document.body.setAttribute("data-theme", "light");
+            return;
+        }
+        document.body.setAttribute("data-theme", "dark");
+    }
+
     return (
         <Box sx={{ display: 'flex', border: "0px" }}>
             <CssBaseline />
@@ -150,21 +159,21 @@ export default function HomePage() {
                     >
                         <MenuIcon className='text-[#FF7594]' />
                     </IconButton>
-                    <div className='flex-1 flex justify-between pr-10 items-center bg-[#F9F9F9]'>
+                    <div className='flex-1 pt-3 flex justify-between pr-10 items-center bg-[#F9F9F9]'>
                         <Typography className='border-l md:py-6 py-5 pl-6' noWrap component="div">
-                            <span className='font-medium md:text-2xl text-lg'>
+                            <span className='font-medium md:text-3xl text-xl'>
                                 Home
                             </span>
                         </Typography>
 
-                        <div className='flex md:gap-5 gap-3'>
-                            <div className='border-[#FDDAD6] border-2 rounded-full w-24 flex justify-end'>
-                                <button className='bg-[#fddad686] rounded-full w-fit p-2 cursor-pointer'>
-                                    <img className='md:w-6 w-4 md:h-6 h-4 rounded-full' src={lightIcon} alt="" />
+                        <div className='flex md:gap-5 gap-3 items-center'>
+                            <div className='border-[#FDDAD6] border-2 rounded-full w-20 flex justify-end h-fit'>
+                                <button onClick={handleTheme} className='bg-[#fddad686] rounded-full w-fit h-fit p-2 cursor-pointer'>
+                                    <img className='md:w-5 w-3 md:h-5 h-3 rounded-full' src={lightIcon} alt="" />
                                 </button>
                             </div>
 
-                            <div className='flex items-center md:gap-3 gap-2'>
+                            <div className='flex items-center md:gap-2 gap-1'>
                                 <img src={avater} alt="" />
                                 <IoIosArrowDown className='md:text-2xl text-lg' />
                             </div>
@@ -176,14 +185,14 @@ export default function HomePage() {
                 border: "0px",
             }} variant="permanent" open={open}>
                 <DrawerHeader sx={{ border: "0px" }} className='flex justify-end'>
-                    <div className='flex w-full pl-5 justify-start items-center md:gap-5 gap-3 md:py-6 py-4'>
+                    <div className='flex w-full pl-5 justify-start items-center md:gap-5 gap-3 md:py-6 py-4 mt-3'>
                         <img src={iconVector} alt="" />
                         <h1 className='md:text-3xl text-xl font-medium'>Medl<span className='text-[#FF7594]'>Doc</span></h1>
                     </div>
-                    <IconButton className='shadow-md' style={{
+                    <IconButton className='shadow-md text-[#FF7594]' style={{
                         zIndex: 100
                     }} onClick={handleDrawerClose}>
-                        {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
+                        {theme.direction === 'rtl' ? <ChevronRightIcon className='text-[#FF7594]' /> : <ChevronLeftIcon className='text-[#FF7594]' />}
                     </IconButton>
                 </DrawerHeader>
 
@@ -218,35 +227,10 @@ export default function HomePage() {
                     ))}
                 </List>
             </Drawer>
-            <Box component="main" className='bg-[#F9F9F9] min-h-[calc(100vh)]' sx={{ flexGrow: 1, p: 3, border: "0px" }}>
+            <Box component="main" className='bg-[#F9F9F9] mt-3 min-h-[calc(100vh)]' sx={{ flexGrow: 1, p: 3, border: "0px" }}>
                 <DrawerHeader />
-                <Typography paragraph>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua. Rhoncus dolor purus non
-                    enim praesent elementum facilisis leo vel. Risus at ultrices mi tempus
-                    imperdiet. Semper risus in hendrerit gravida rutrum quisque non tellus.
-                    Convallis convallis tellus id interdum velit laoreet id donec ultrices.
-                    Odio morbi quis commodo odio aenean sed adipiscing. Amet nisl suscipit
-                    adipiscing bibendum est ultricies integer quis. Cursus euismod quis viverra
-                    nibh cras. Metus vulputate eu scelerisque felis imperdiet proin fermentum
-                    leo. Mauris commodo quis imperdiet massa tincidunt. Cras tincidunt lobortis
-                    feugiat vivamus at augue. At augue eget arcu dictum varius duis at
-                    consectetur lorem. Velit sed ullamcorper morbi tincidunt. Lorem donec massa
-                    sapien faucibus et molestie ac.
-                </Typography>
-                <Typography paragraph>
-                    Consequat mauris nunc congue nisi vitae suscipit. Fringilla est ullamcorper
-                    eget nulla facilisi etiam dignissim diam. Pulvinar elementum integer enim
-                    neque volutpat ac tincidunt. Ornare suspendisse sed nisi lacus sed viverra
-                    tellus. Purus sit amet volutpat consequat mauris. Elementum eu facilisis
-                    sed odio morbi. Euismod lacinia at quis risus sed vulputate odio. Morbi
-                    tincidunt ornare massa eget egestas purus viverra accumsan in. In hendrerit
-                    gravida rutrum quisque non tellus orci ac. Pellentesque nec nam aliquam sem
-                    et tortor. Habitant morbi tristique senectus et. Adipiscing elit duis
-                    tristique sollicitudin nibh sit. Ornare aenean euismod elementum nisi quis
-                    eleifend. Commodo viverra maecenas accumsan lacus vel facilisis. Nulla
-                    posuere sollicitudin aliquam ultrices sagittis orci a.
-                </Typography>
+
+                <WellcomeComponent></WellcomeComponent>
             </Box>
         </Box>
     );
