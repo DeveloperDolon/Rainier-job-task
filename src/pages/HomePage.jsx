@@ -132,106 +132,112 @@ export default function HomePage() {
     };
 
     const handleTheme = () => {
-        if(document.body.getAttribute("data-theme") === "dark") {
-            document.body.setAttribute("data-theme", "light");
+        if (document.body.classList.contains("dark")) {
+            document.body.classList.remove("dark");
+            document.body.classList.add("light");
             return;
         }
-        document.body.setAttribute("data-theme", "dark");
+        document.body.classList.remove("light");
+        document.body.classList.add("dark");
     }
 
     return (
-        <Box sx={{ display: 'flex', border: "0px" }}>
-            <CssBaseline />
-            <AppBar style={{ boxShadow: "none" }} position="fixed" open={open}>
-                <Toolbar style={{ paddingLeft: toolPadding, paddingRight: 0 }} className='bg-white flex text-black'>
-                    <IconButton
-                        className='shadow-md'
-                        color="#FF7594"
-                        aria-label="open drawer"
-                        onClick={handleDrawerOpen}
-                        edge="start"
-                        sx={{
-                            borderRadius: "7px",
-                            backgroundColor: "white",
-                            marginRight: 1.5,
-                            ...(open && { display: 'none' }),
-                        }}
-                    >
-                        <MenuIcon className='text-[#FF7594]' />
-                    </IconButton>
-                    <div className='flex-1 pt-3 flex justify-between pr-10 items-center bg-[#F9F9F9]'>
-                        <Typography className='border-l md:py-6 py-5 pl-6' noWrap component="div">
-                            <span className='font-medium md:text-3xl text-xl'>
-                                Home
-                            </span>
-                        </Typography>
-
-                        <div className='flex md:gap-5 gap-3 items-center'>
-                            <div className='border-[#FDDAD6] border-2 rounded-full w-20 flex justify-end h-fit'>
-                                <button onClick={handleTheme} className='bg-[#fddad686] rounded-full w-fit h-fit p-2 cursor-pointer'>
-                                    <img className='md:w-5 w-3 md:h-5 h-3 rounded-full' src={lightIcon} alt="" />
-                                </button>
-                            </div>
-
-                            <div className='flex items-center md:gap-2 gap-1'>
-                                <img src={avater} alt="" />
-                                <IoIosArrowDown className='md:text-2xl text-lg' />
-                            </div>
-                        </div>
-                    </div>
-                </Toolbar>
-            </AppBar>
-            <Drawer style={{
-                border: "0px",
-            }} variant="permanent" open={open}>
-                <DrawerHeader sx={{ border: "0px" }} className='flex justify-end'>
-                    <div className='flex w-full pl-5 justify-start items-center md:gap-5 gap-3 md:py-6 py-4 mt-3'>
-                        <img src={iconVector} alt="" />
-                        <h1 className='md:text-3xl text-xl font-medium'>Medl<span className='text-[#FF7594]'>Doc</span></h1>
-                    </div>
-                    <IconButton className='shadow-md text-[#FF7594]' style={{
-                        zIndex: 100
-                    }} onClick={handleDrawerClose}>
-                        {theme.direction === 'rtl' ? <ChevronRightIcon className='text-[#FF7594]' /> : <ChevronLeftIcon className='text-[#FF7594]' />}
-                    </IconButton>
-                </DrawerHeader>
-
-                <List sx={{
-                    mt: 5
-                }}>
-                    {menuItems?.map((text, index) => (
-                        <ListItem key={index} disablePadding sx={{ display: 'block' }}>
-                            <ListItemButton
+        <div>
+            <div className="md:block hidden">
+                <Box sx={{ display: 'flex', border: "0px" }}>
+                    <CssBaseline />
+                    <AppBar style={{ boxShadow: "none" }} position="fixed" open={open}>
+                        <Toolbar style={{ paddingLeft: toolPadding, paddingRight: 0 }} className='bg-white flex text-black'>
+                            <IconButton
+                                className='shadow-md'
+                                color="#FF7594"
+                                aria-label="open drawer"
+                                onClick={handleDrawerOpen}
+                                edge="start"
                                 sx={{
-                                    minHeight: 48,
-                                    justifyContent: open ? 'initial' : 'center',
-                                    px: 2.5,
+                                    borderRadius: "7px",
+                                    backgroundColor: "white",
+                                    marginRight: 1.5,
+                                    ...(open && { display: 'none' }),
                                 }}
-                                className='font-medium'
                             >
-                                <ListItemIcon
-                                    sx={{
-                                        minWidth: 0,
-                                        mr: open ? 3 : 'auto',
-                                        justifyContent: 'center',
-                                    }}
-
-                                >
-                                    <span className='md:text-2xl font-bold text-xl'>
-                                        {text?.icon}
+                                <MenuIcon className='text-[#FF7594]' />
+                            </IconButton>
+                            <div className='flex-1 pt-3 flex justify-between pr-10 items-center bg-[#F9F9F9] dark:bg-[#150A09]'>
+                                <Typography className='border-l md:py-6 py-5 pl-6' noWrap component="div">
+                                    <span className='font-medium md:text-3xl text-xl md:ml-0 ml-16'>
+                                        Home
                                     </span>
-                                </ListItemIcon>
-                                <ListItemText primary={text?.item} sx={{ opacity: open ? 1 : 0 }} />
-                            </ListItemButton>
-                        </ListItem>
-                    ))}
-                </List>
-            </Drawer>
-            <Box component="main" className='bg-[#F9F9F9] mt-3 min-h-[calc(100vh)]' sx={{ flexGrow: 1, p: 3, border: "0px" }}>
-                <DrawerHeader />
+                                </Typography>
 
-                <WellcomeComponent></WellcomeComponent>
-            </Box>
-        </Box>
+                                <div className='flex md:gap-5 gap-3 items-center'>
+                                    <div className='border-[#FDDAD6] border-2 rounded-full w-20 flex justify-end h-fit'>
+                                        <button onClick={handleTheme} className='bg-[#fddad686] rounded-full w-fit h-fit p-2 cursor-pointer'>
+                                            <img className='md:w-5 w-3 md:h-5 h-3 rounded-full' src={lightIcon} alt="" />
+                                        </button>
+                                    </div>
+
+                                    <div className='flex items-center md:gap-2 gap-1'>
+                                        <img src={avater} alt="" />
+                                        <IoIosArrowDown className='md:text-2xl text-lg' />
+                                    </div>
+                                </div>
+                            </div>
+                        </Toolbar>
+                    </AppBar>
+                    <Drawer style={{
+                        border: "0px",
+                    }} variant="permanent" open={open}>
+                        <DrawerHeader sx={{ border: "0px" }} className='flex justify-end'>
+                            <div className='flex w-full pl-5 justify-start items-center md:gap-5 gap-3 md:py-6 py-4 mt-3'>
+                                <img src={iconVector} alt="" />
+                                <h1 className='md:text-3xl text-xl font-medium'>Medl<span className='text-[#FF7594]'>Doc</span></h1>
+                            </div>
+                            <IconButton className='shadow-md text-[#FF7594] sm:block ' style={{
+                                zIndex: 100
+                            }} onClick={handleDrawerClose}>
+                                {theme.direction === 'rtl' ? <ChevronRightIcon className='text-[#FF7594]' /> : <ChevronLeftIcon className='text-[#FF7594]' />}
+                            </IconButton>
+                        </DrawerHeader>
+
+                        <List sx={{
+                            mt: 5
+                        }}>
+                            {menuItems?.map((text, index) => (
+                                <ListItem key={index} disablePadding sx={{ display: 'block' }}>
+                                    <ListItemButton
+                                        sx={{
+                                            minHeight: 48,
+                                            justifyContent: open ? 'initial' : 'center',
+                                            px: 2.5,
+                                        }}
+                                        className='font-medium'
+                                    >
+                                        <ListItemIcon
+                                            sx={{
+                                                minWidth: 0,
+                                                mr: open ? 3 : 'auto',
+                                                justifyContent: 'center',
+                                            }}
+
+                                        >
+                                            <span className='md:text-2xl font-bold text-xl'>
+                                                {text?.icon}
+                                            </span>
+                                        </ListItemIcon>
+                                        <ListItemText primary={text?.item} sx={{ opacity: open ? 1 : 0 }} />
+                                    </ListItemButton>
+                                </ListItem>
+                            ))}
+                        </List>
+                    </Drawer>
+                    <Box component="main" className='bg-[#F9F9F9] dark:bg-[#150A09] mt-3 min-h-[calc(100vh)]' sx={{ flexGrow: 1, p: 3, border: "0px" }}>
+                        <DrawerHeader />
+
+                        <WellcomeComponent></WellcomeComponent>
+                    </Box>
+                </Box>
+            </div>
+        </div>
     );
 }

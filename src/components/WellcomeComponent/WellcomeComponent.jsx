@@ -59,40 +59,40 @@ const WellcomeComponent = () => {
                 </div>
 
                 <div className="flex gap-5 lg:justify-between sm:justify-between justify-center  flex-wrap  mt-10">
-                    <div className="p-5 shadow-md w-56 bg-white rounded-md">
+                    <div className="p-5 shadow-md md:w-56 sm:w-48 w-40 bg-white rounded-md dark:bg-[#FFFFFF1A]">
                         <img src={hartIcon} className="bg-[#FF7594] rounded-md md:w-10 w-7 md:h-10 h-7" alt="" />
 
-                        <div>
+                        <div className="dark:text-white">
                             <p className="md:text-base text-sm font-semibold py-3">Pluse Count</p>
                             <h4 className="md:text-2xl text-lg font-medium ">60 bpm</h4>
                             <p className="flex items-center gap-2"><TiArrowSortedUp className="md:text-xl text-lg" /><span className="text-green-600 font-medium md:text-base text-sm py-3">Normal</span></p>
                         </div>
                     </div>
 
-                    <div className="p-5 shadow-md w-56 bg-white rounded-md">
+                    <div className="p-5 shadow-md md:w-56 sm:w-48 w-40 bg-white rounded-md dark:bg-[#FFFFFF1A]">
                         <img src={pressureIcon} className="rounded-md md:w-10 w-7 md:h-10 h-7" alt="" />
 
-                        <div>
+                        <div className="dark:text-white">
                             <p className="md:text-base text-sm font-semibold py-3">Blood Pressure</p>
                             <h4 className="md:text-2xl text-lg font-medium ">100/70 mmhG</h4>
                             <p className="flex items-center gap-2"><TiArrowSortedUp className="md:text-xl text-lg" /><span className="text-green-600 font-medium md:text-base text-sm py-3">Slightly higher</span></p>
                         </div>
                     </div>
 
-                    <div className="p-5 shadow-md w-56 bg-white rounded-md">
+                    <div className="p-5 shadow-md md:w-56 sm:w-48 w-40 bg-white rounded-md dark:bg-[#FFFFFF1A]">
                         <img src={oxygenIcon} className="rounded-md md:w-10 w-7 md:h-10 h-7" alt="" />
 
-                        <div>
+                        <div className="dark:text-white">
                             <p className="md:text-base text-sm font-semibold py-3">Oxygen Saturation</p>
                             <h4 className="md:text-2xl text-lg font-medium ">97 %</h4>
                             <p className="flex items-center gap-2"><TiArrowSortedUp className="md:text-xl text-lg" /><span className="text-green-600 font-medium md:text-base text-sm py-3">Slightly higher</span></p>
                         </div>
                     </div>
 
-                    <div className="p-5 shadow-md w-56 bg-white rounded-md">
+                    <div className="p-5 shadow-md md:w-56 sm:w-48 w-40 bg-white rounded-md dark:bg-[#FFFFFF1A]">
                         <img src={glucoseIcon} className="rounded-md md:w-10 w-7 md:h-10 h-7" alt="" />
 
-                        <div>
+                        <div className="dark:text-white">
                             <p className="md:text-base text-sm font-semibold py-3">Glucose Count</p>
                             <h4 className="md:text-2xl text-lg font-medium ">100 mm/dL</h4>
                             <p className="flex items-center gap-2"><TiArrowSortedUp className="md:text-xl text-lg" /><span className="text-green-600 font-medium md:text-base text-sm py-3">Normal</span></p>
@@ -100,11 +100,11 @@ const WellcomeComponent = () => {
                     </div>
                 </div>
 
-                <div className="mt-14 bg-white xl:block hidden rounded-lg border p-6">
-                    <h1 className="md:text-2xl text-xl font-medium pb-5">To-Do List</h1>
+                <div className="mt-14 bg-white dark:bg-[#FFFFFF1A] xl:block hidden rounded-lg border p-6 dark:border-none">
+                    <h1 className="md:text-2xl text-xl font-medium pb-5 dark:text-gray-100">To-Do List</h1>
 
                     <form onSubmit={handleAddTodo} className="flex items-start gap-5">
-                        <textarea name="todo" required className="p-5 w-full border rounded-lg" id="" rows="4"></textarea>
+                        <textarea name="todo" required className="p-5 dark:bg-[#FFFFFF1A] w-full border rounded-lg dark:text-gray-100" id="" rows="4"></textarea>
 
                         <button
                             style={{ background: "linear-gradient(101deg, #FF7594 -6.58%, #FF7C65 102.46%)" }}
@@ -113,7 +113,7 @@ const WellcomeComponent = () => {
 
                     <div className="mt-10 flex justify-between items-centers">
                         <div className="flex items-center checkbox-container">
-                            <input onClick={handleSelectAll} className="w-10 h-10 accent-[#FF7594] bg-white rounded-lg text-white" type="checkbox" /> <label className="md:text-lg text-sm font-semibold ml-5">Select All</label>
+                            <input onClick={handleSelectAll} className="w-10 h-10 accent-[#FF7594] bg-white rounded-lg text-white dark:text-gray-100" type="checkbox" /> <label className="md:text-lg text-sm font-semibold ml-5 dark:text-gray-100">Select All</label>
                         </div>
 
                         <button
@@ -124,7 +124,7 @@ const WellcomeComponent = () => {
                     <div id="checkboxContainer" className="mt-8 space-y-5 min-h-[300px]">
                         {
                             todos?.map((item, idx) => <div key={idx} className="flex items-center checkbox-container">
-                                <input className="w-10 h-10 accent-[#FF7594] bg-white rounded-lg text-white" type="checkbox" /> <label className="md:text-lg text-sm font-semibold ml-5 flex items-center">{item?.text} <span className="ml-5 text-gray-300 md:text-base text-sm font-medium">Last Added: {item?.date}</span></label>
+                                <input className="w-10 h-10 accent-[#FF7594] bg-white rounded-lg text-white" type="checkbox" /> <label className="md:text-lg text-sm font-semibold ml-5 flex items-center dark:text-gray-100">{item?.text} <span className="ml-5 text-gray-300 md:text-base text-sm font-medium dark:text-gray-400">Last Added: {item?.date}</span></label>
                             </div>)
                         }
                     </div>
@@ -133,22 +133,22 @@ const WellcomeComponent = () => {
 
             <div className="xl:w-[500px] w-full h-fit">
                 <div className="flex mt-5 lg:flex-row justify-between items-start flex-col-reverse gap-5">
-                    <div className="xl:hidden flex-1 lg:w-fit w-full bg-white rounded-lg border p-6">
+                    <div className="xl:hidden dark:bg-[#FFFFFF1A] dark:border-none flex-1 lg:w-fit w-full bg-white rounded-lg border p-6">
                         <h1 className="md:text-2xl text-xl font-medium pb-5">To-Do List</h1>
 
-                        <form onSubmit={handleAddTodo} className="flex items-end flex-col gap-5">
-                            <textarea name="todo" required className="p-5 w-full border rounded-lg" id="" rows="4"></textarea>
+                        <form onSubmit={handleAddTodo} className="flex items-end flex-col gap-5 relative">
+                            <textarea name="todo" required className="p-5 w-full border rounded-lg dark:bg-[#FFFFFF1A] text-gray-400" id="" rows="4"></textarea>
 
                             <button
                                 style={{ background: "linear-gradient(101deg, #FF7594 -6.58%, #FF7C65 102.46%)" }}
-                                className="flex gap-2 items-center py-2 px-6 md:text-lg text-sm rounded-lg text-white" type="submit"><MdDone />
+                                className="flex gap-2 md:text-2xl text-lg items-center p-1 rounded-full text-white absolute bottom-3 right-2" type="submit">
                                     <CiCirclePlus />
                                 </button>
                         </form>
 
                         <div className="mt-10 flex justify-between items-centers">
                             <div className="flex items-center checkbox-container">
-                                <input onClick={handleSelectAll} className="w-10 h-10 accent-[#FF7594] bg-white rounded-lg text-white" type="checkbox" /> <label className="md:text-lg text-sm font-semibold ml-5">Select All</label>
+                                <input onClick={handleSelectAll} className="w-10 h-10 accent-[#FF7594] bg-white rounded-lg text-white" type="checkbox" /> <label className="md:text-lg text-sm font-semibold ml-5 dark:text-white">Select All</label>
                             </div>
 
                             <button
@@ -159,7 +159,7 @@ const WellcomeComponent = () => {
                         <div id="checkboxContainer" className="mt-8 space-y-5">
                             {
                                 todos?.map((item, idx) => <div key={idx} className="flex items-center checkbox-container">
-                                    <input className="w-10 h-10 accent-[#FF7594] bg-white rounded-lg text-white" type="checkbox" /> <label className="md:text-lg text-sm font-semibold ml-5 flex items-center">{item?.text} <span className="ml-5 text-gray-300 md:text-base text-sm font-medium">Last Added: {item?.date}</span></label>
+                                    <input className="w-10 h-10 accent-[#FF7594] bg-white rounded-lg text-white" type="checkbox" /> <label className="md:text-lg text-sm font-semibold ml-5 flex items-center dark:text-white">{item?.text} <span className="ml-5 text-gray-300 md:text-base text-sm font-medium dark:text-gray-400">Last Added: {item?.date}</span></label>
                                 </div>)
                             }
                         </div>

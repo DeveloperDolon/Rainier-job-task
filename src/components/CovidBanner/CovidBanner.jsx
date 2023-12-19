@@ -3,7 +3,7 @@ import vaccineImage from "../../assets/Svg_sample2.svg";
 
 const CovidBanner = () => {
     return (
-        <div className="bg-white border rounded-lg mt-5 p-5">
+        <div className="bg-white dark:bg-[#FFFFFF1A] dark:border-none dark:text-white border rounded-lg mt-5 p-5">
             <div className="flex justify-between flex-wrap gap-7">
                 <h3 className="md:text-xl text-lg font-medium">Covid-19 Updates</h3>
 
@@ -13,7 +13,7 @@ const CovidBanner = () => {
                 </div>
             </div>       
 
-            <div className="grid sm:grid-cols-2 grid-cols-1 justify-items-center mt-10">
+            <div className="flex sm:justify-between sm:flex-row flex-col justify-center gap-10 mt-10">
                 <img src={vaccineImage} alt="" />
 
                 <div style={{background: "linear-gradient(101deg, #FF7594 -6.58%, #FF7C65 102.46%)"}} className="text-center rounded-md p-5">
