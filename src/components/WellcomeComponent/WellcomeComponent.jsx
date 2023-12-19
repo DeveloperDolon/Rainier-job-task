@@ -134,7 +134,7 @@ const WellcomeComponent = () => {
             <div className="xl:w-[500px] w-full h-fit">
                 <div className="flex mt-5 lg:flex-row justify-between items-start flex-col-reverse gap-5">
                     <div className="xl:hidden dark:bg-[#FFFFFF1A] dark:border-none flex-1 lg:w-fit w-full bg-white rounded-lg border p-6">
-                        <h1 className="md:text-2xl text-xl font-medium pb-5">To-Do List</h1>
+                        <h1 className="md:text-2xl text-xl font-medium pb-5 dark:text-white">To-Do List</h1>
 
                         <form onSubmit={handleAddTodo} className="flex items-end flex-col gap-5 relative">
                             <textarea name="todo" required className="p-5 w-full border rounded-lg dark:bg-[#FFFFFF1A] text-gray-400" id="" rows="4"></textarea>
