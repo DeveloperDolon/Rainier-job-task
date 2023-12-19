@@ -8,7 +8,7 @@ import TimelineDot from '@mui/lab/TimelineDot';
 
 const Appointments = () => {
     return (
-        <div className='pb-10'>
+        <div className='pb-10 lg:w-fit w-full bg-white border rounded-lg'>
 
             <h3 className='md:text-2xl px-5 py-5 pb-5 text-lg font-medium'>Upcoming Appointments</h3>
 
@@ -25,26 +25,26 @@ const Appointments = () => {
                         <TimelineConnector />
                     </TimelineSeparator>
                     <TimelineContent>
-                        <div className='flex h-fit items-center bg-[#FFEBEB] rounded-3xl'>
-                            <div className='bg-white rounded-3xl border w-fit p-5'>
-                                <h4 className='md:text-lg text-sm font-medium text-gray-400'>2022</h4>
+                        <div className='flex h-fit items-center bg-[#FFEBEB] rounded-3xl gap-3'>
+                            <div className='bg-white rounded-3xl border w-fit md:p-5 sm:p-3 p-2 py-5'>
+                                <h4 className='md:text-lg sm:text-sm text-xs font-medium text-gray-400'>2022</h4>
 
-                                <h3 className='md:text-3xl text-xl font-semibold'>13</h3>
-                                <h3 className='md:text-2xl text-xl font-medium text-gray-400'>Sep</h3>
+                                <h3 className='md:text-3xl sm:text-xl text-base font-semibold'>13</h3>
+                                <h3 className='md:text-2xl sm:text-xl text-base font-medium text-gray-400'>Sep</h3>
                             </div>
 
-                            <div className='p-5'>
-                                <h3 className='md:text-lg text-base font-semibold'>Dr. Muhammad Abdul Hussein</h3>
-                                <p className='md:text-base text-sm font-medium py-1'>Cardiologist</p>
+                            <div className='pr-2'>
+                                <h3 className='md:text-lg sm:text-base text-sm font-semibold'>Dr. Muhammad Abdul Hussein</h3>
+                                <p className='md:text-base sm:text-sm text-xs font-medium py-1'>Cardiologist</p>
 
                                 <div className='flex gap-3 mt-2'>
-                                    <button className='md:text-base text-sm font-semibold bg-white py-1 px-2 rounded-md'>
+                                    <button className='md:text-base sm:text-sm text-xs font-semibold bg-white py-1 px-2 rounded-md'>
                                         <span className='text-gray-400 mr-2'>
                                             Slot
                                         </span>
                                         Morning
                                     </button>
-                                    <button className='md:text-base text-sm font-semibold bg-white py-1 px-2 rounded-md'>
+                                    <button className='md:text-base sm:text-sm text-xs font-semibold bg-white py-1 px-2 rounded-md'>
                                         <span className='text-gray-400 mr-2'>
                                             Time
                                         </span>
@@ -100,7 +100,7 @@ const Appointments = () => {
                             <div className='bg-white rounded-3xl border w-fit p-5'>
                                 <h4 className='md:text-lg text-sm font-medium text-gray-400'>2022</h4>
 
-                                <h3 className='md:text-3xl text-xl font-semibold'>13</h3>
+                                <h3 className='md:text-3xl sm:text-xl text-sm font-semibold'>13</h3>
                                 <h3 className='md:text-2xl text-xl font-medium text-gray-400'>Sep</h3>
                             </div>
 
